@@ -1,45 +1,52 @@
 # Tiny Tapeout Project Information
+# Tiny Tapeout Project Information
 project:
   title:        "Traffic Light Controller"
+  author:       "Karl Jensen"              # REQUIRED
   description:  "A timed FSM cycling Green, Yellow, and Red lights."
-  how_it_works: "Uses a state machine and a counter to transition states after specific clock cycles."
-  how_to_test:  "Apply reset, then observe uo_out pins 0, 1, and 2 cycling in order."
+  how_it_works: "Uses a state machine and a counter to transition states."
+  how_to_test:  "Apply reset, then observe uo_out pins 0, 1, and 2."
   language:     "Verilog"
-  top_module:   "tt_um_traffic_light_controller" # Must match your Verilog module name
+  top_module:   "tt_um_traffic_light_controller"
   source_files:
     - "project.v"
+  tiles:        "1x1"                    # REQUIRED (1x1 is the smallest size)
+  clock_hz:     10000000                 # REQUIRED (Default 10MHz)
 
-# Pinout mapping
-outputs:
-  - "green"      # uo_out[0]
-  - "yellow"     # uo_out[1]
-  - "red"        # uo_out[2]
-  - "done"       # uo_out[3]
-  - "none"
-  - "none"
-  - "none"
-  - "none"
+# Pinout mapping - REQUIRED section name
+pinout:
+  # South Pins (uo_out)
+  outputs:
+    - "green"
+    - "yellow"
+    - "red"
+    - "done"
+    - "none"
+    - "none"
+    - "none"
+    - "none"
 
-inputs:
-  - "none"
-  - "none"
-  - "none"
-  - "none"
-  - "none"
-  - "none"
-  - "none"
-  - "none"
+  # West Pins (ui_in)
+  inputs:
+    - "none"
+    - "none"
+    - "none"
+    - "none"
+    - "none"
+    - "none"
+    - "none"
+    - "none"
 
-# Bidirectional pins
-uio:
-  - "none"
-  - "none"
-  - "none"
-  - "none"
-  - "none"
-  - "none"
-  - "none"
-  - "none"
+  # Bidirectional Pins
+  uio:
+    - "none"
+    - "none"
+    - "none"
+    - "none"
+    - "none"
+    - "none"
+    - "none"
+    - "none"
 
 # Do not change!
 yaml_version: 6
