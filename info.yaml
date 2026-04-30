@@ -1,8 +1,7 @@
 # Tiny Tapeout Project Information
-# Tiny Tapeout Project Information
 project:
   title:        "Traffic Light Controller"
-  author:       "Karl Jensen"              # REQUIRED
+  author:       "Karl Jensen"
   description:  "A timed FSM cycling Green, Yellow, and Red lights."
   how_it_works: "Uses a state machine and a counter to transition states."
   how_to_test:  "Apply reset, then observe uo_out pins 0, 1, and 2."
@@ -10,15 +9,10 @@ project:
   top_module:   "tt_um_traffic_light_controller"
   source_files:
     - "project.v"
-  tiles:        "1x1"                    # REQUIRED (1x1 is the smallest size)
-  clock_hz:     10000000                 # REQUIRED (Default 10MHz)
+  tiles:        "1x1"
+  clock_hz:     10000000
 
-# Pinout mapping - REQUIRED section name
-git add info.yaml
-git commit -m "Fix info.yaml: Add missing author, tiles, clock_hz, and pinout section"
-git push origin main
-
-# New Flat Pinout Format
+# Standard Tiny Tapeout Pinout
 pinout:
   ui[0]: "none"
   ui[1]: "none"
