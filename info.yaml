@@ -14,39 +14,36 @@ project:
   clock_hz:     10000000                 # REQUIRED (Default 10MHz)
 
 # Pinout mapping - REQUIRED section name
+git add info.yaml
+git commit -m "Fix info.yaml: Add missing author, tiles, clock_hz, and pinout section"
+git push origin main
+
+# New Flat Pinout Format
 pinout:
-  # South Pins (uo_out)
-  outputs:
-    - "green"
-    - "yellow"
-    - "red"
-    - "done"
-    - "none"
-    - "none"
-    - "none"
-    - "none"
-
-  # West Pins (ui_in)
-  inputs:
-    - "none"
-    - "none"
-    - "none"
-    - "none"
-    - "none"
-    - "none"
-    - "none"
-    - "none"
-
-  # Bidirectional Pins
-  uio:
-    - "none"
-    - "none"
-    - "none"
-    - "none"
-    - "none"
-    - "none"
-    - "none"
-    - "none"
+  ui[0]: "none"
+  ui[1]: "none"
+  ui[2]: "none"
+  ui[3]: "none"
+  ui[4]: "none"
+  ui[5]: "none"
+  ui[6]: "none"
+  ui[7]: "none"
+  uo[0]: "green"
+  uo[1]: "yellow"
+  uo[2]: "red"
+  uo[3]: "done"
+  uo[4]: "none"
+  uo[5]: "none"
+  uo[6]: "none"
+  uo[7]: "none"
+  uio[0]: "none"
+  uio[1]: "none"
+  uio[2]: "none"
+  uio[3]: "none"
+  uio[4]: "none"
+  uio[5]: "none"
+  uio[6]: "none"
+  uio[7]: "none"
 
 # Do not change!
 yaml_version: 6
