@@ -14,7 +14,10 @@ module tt_um_traffic_light_controller (
     input  wire       ena,      // logic enable
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low reset
+    wire _unused = &{ui_in, uio_in, ena, 1'b0}; 
+
 );
+
 
     // 1. Assign unused pins
     assign uio_out = 8'b0;
