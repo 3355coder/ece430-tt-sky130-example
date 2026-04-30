@@ -4,24 +4,19 @@
 ## Makefile
 # See https://docs.cocotb.org/en/stable/quickstart.html for more info
 
-# Makefile for HW08 - PM32 Multiplier Verification
+# Traffic controler
+
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 
-# 1. Point to the actual location of your source files
-SRC_DIR = /foss/common/pm32
+# Be very explicit with the path
+VERILOG_SOURCES = $(PWD)/../src/project.v
 
-# 2. Specify the files in that directory
-PROJECT_SOURCES = pm32.v spm.v
+# This MUST match the 'module tt_um_...' name in project.v
+TOPLEVEL = tt_um_traffic_light_controller
 
-# RTL simulation setup
-SIM_BUILD = sim_build/rtl
-VERILOG_SOURCES += $(addprefix $(SRC_DIR)/,$(PROJECT_SOURCES))
+# This MUST match the 'test.py' filename (without .py)
+MODULE = test
 
-# 3. Point to the main module (pm32) and the Python test (test.py)
-TOPLEVEL = pm32
-COCOTB_TEST_MODULES = test
-
-# Include cocotb's make rules
 include $(shell cocotb-config --makefiles)/Makefile.sim
 
