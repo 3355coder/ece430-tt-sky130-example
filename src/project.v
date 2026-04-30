@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+
 `default_nettype none
 
 module tt_um_traffic_light_controller (
@@ -14,33 +15,31 @@ module tt_um_traffic_light_controller (
     input  wire       ena,      // logic enable
     input  wire       clk,      // clock
     input  wire       rst_n     // reset_n - low reset
-    wire _unused = &{ui_in, uio_in, ena, 1'b0}; 
-
 );
 
+    // Correct placement for unused signal logic
+    wire _unused = &{ui_in, uio_in, ena, 1'b0}; 
 
     // 1. Assign unused pins
     assign uio_out = 8'b0;
-    assign uio_oe  = 8'b0;      // All bidirectionals as inputs
-    assign uo_out[7:4] = 4'b0;  // Unused upper bits
+    assign uio_oe  = 8'b0;      
+    assign uo_out[7:4] = 4'b0;  
 
     // 2. Internal Reset Logic 
-    // Your module expects active-high reset. TT provides active-low (rst_n).
     wire reset_high = !rst_n;
 
     // 3. Instantiate your module
     finite_state_machine my_fsm (
         .clock  (clk),
         .reset  (reset_high),
-        .green  (uo_out[0]), // South Pin 0
-        .yellow (uo_out[1]), // South Pin 1
-        .red    (uo_out[2]), // South Pin 2
-        .done   (uo_out[3])  // South Pin 3
+        .green  (uo_out[0]),
+        .yellow (uo_out[1]),
+        .red    (uo_out[2]),
+        .done   (uo_out[3])
     );
 
 endmodule
 
-// --- Your Original Module ---
 module finite_state_machine(
     input clock,
     input reset,
@@ -94,4 +93,5 @@ module finite_state_machine(
         endcase
     end
 endmodule
+
 
