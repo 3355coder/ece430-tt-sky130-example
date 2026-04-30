@@ -7,28 +7,24 @@
 `default_nettype none
 
 module tt_um_traffic_light_controller (
-    input  wire [7:0] ui_in,    // Dedicated inputs
-    output wire [7:0] uo_out,   // Dedicated outputs
-    input  wire [7:0] uio_in,   // IOs: Input path
-    output wire [7:0] uio_out,  // IOs: Output path
-    output wire [7:0] uio_oe,   // IOs: Enable path
-    input  wire       ena,      // logic enable
-    input  wire       clk,      // clock
-    input  wire       rst_n     // reset_n - low reset
+    input  wire [7:0] ui_in,    
+    output wire [7:0] uo_out,   
+    input  wire [7:0] uio_in,   
+    output wire [7:0] uio_out,  
+    output wire [7:0] uio_oe,   
+    input  wire       ena,      
+    input  wire       clk,      
+    input  wire       rst_n     
 );
 
-    // Correct placement for unused signal logic
     wire _unused = &{ui_in, uio_in, ena, 1'b0}; 
 
-    // 1. Assign unused pins
     assign uio_out = 8'b0;
     assign uio_oe  = 8'b0;      
     assign uo_out[7:4] = 4'b0;  
 
-    // 2. Internal Reset Logic 
     wire reset_high = !rst_n;
 
-    // 3. Instantiate your module
     finite_state_machine my_fsm (
         .clock  (clk),
         .reset  (reset_high),
@@ -93,5 +89,6 @@ module finite_state_machine(
         endcase
     end
 endmodule
+
 
 
