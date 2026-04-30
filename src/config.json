@@ -6,15 +6,10 @@
     "CLOCK_PORT": "clk",
     "CLOCK_PERIOD": 100,
     "RT_MAX_LAYER": "met4",
-    "DIE_AREA": "0 0 161.0 225.76",
-    "FP_SIZING": "absolute",
+    "TERMINAL_OUTPUT_FORMAT": "met4",
     "PL_TARGET_DENSITY": 0.40,
     "GRT_REPAIR_ANTENNAS": true,
     "RUN_CVC": 0,
-    "FP_PDN_VOFFSET": 5,
-    "FP_PDN_VPITCH": 40,
-    "FP_PDN_HOFFSET": 5,
-    "FP_PDN_HPITCH": 40
+    "QUIT_ON_TIMING_VIOLATIONS": false
 }
-
 
