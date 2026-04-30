@@ -8,14 +8,15 @@
 
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
+SRC_DIR = $(PWD)/../src
 
-# Be very explicit with the path
-VERILOG_SOURCES = $(PWD)/../src/project.v
+# Ensure this matches your filename exactly
+VERILOG_SOURCES += $(SRC_DIR)/project.v
 
-# This MUST match the 'module tt_um_...' name in project.v
+# This must match the 'module tt_um_...' name in project.v
 TOPLEVEL = tt_um_traffic_light_controller
 
-# This MUST match the 'test.py' filename (without .py)
+# This must match your 'test.py' filename
 MODULE = test
 
 include $(shell cocotb-config --makefiles)/Makefile.sim
