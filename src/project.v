@@ -6,28 +6,31 @@
 
 `default_nettype none
 
+`default_nettype none
+
 module tt_um_traffic_light_controller (
     input  wire [7:0] ui_in,
     output wire [7:0] uo_out,
     input  wire [7:0] uio_in,
     output wire [7:0] uio_out,
     output wire [7:0] uio_oe,
-    input  wire ena,
-    input  wire clk,
-    input  wire rst_n
+    input  wire       ena,
+    input  wire       clk,
+    input  wire       rst_n
 );
 
-    // Mark unused inputs as "used" to silence Verilator warnings
-    wire _unused_ok = &{ui_in, uio_in, ena, 1'b0};
+    // Silence lint warnings
+    wire _unused = &{ui_in, uio_in, ena, 1'b0};
 
-    wire reset = ~rst_n;
+    wire reset = !rst_n;
     wire green, yellow, red, done;
 
-    assign uo_out = {4'b0000, done, red, yellow, green};
-    assign uio_out = 8'b00000000;
-    assign uio_oe  = 8'b00000000;
+    // Pin Mapping: South Pins 0, 1, 2, 3
+    assign uo_out = {4'b0, done, red, yellow, green};
+    assign uio_out = 8'b0;
+    assign uio_oe  = 8'b0;
 
-    finite_state_machine fsm (
+    finite_state_machine fsm_inst (
         .clock (clk),
         .reset (reset),
         .green (green),
