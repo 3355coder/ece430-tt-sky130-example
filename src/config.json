@@ -8,17 +8,19 @@
     "FP_SIZING": "absolute",
     "DIE_AREA": "0 0 161 226",
     "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
-    "PL_TARGET_DENSITY": 0.60,
+    "PL_TARGET_DENSITY": 0.65,
     "RT_MAX_LAYER": "met4",
     "RT_MIN_LAYER": "met1",
-    "FP_PDN_ENABLE_RAILS": 1,
-    "FP_PDN_ENABLE_GLOBAL_CONNECTIONS": 1,
+    "FP_PDN_ENABLE_RAILS": 0,
+    "FP_PDN_ENABLE_GLOBAL_CONNECTIONS": 0,
     "FP_PDN_MULTILAYER": 0,
-    "PDN_CORE_RAILS_LAYER": "met4",
-    "PDN_CORE_RAILS_WIDTH": 1.6,
     "VPWR": "VDPWR",
     "VGND": "VGND",
+    "FP_IO_VTHICKNESS_MULT": 4,
+    "FP_IO_HTHICKNESS_MULT": 4,
     "MAGIC_WRITE_FULL_GDS": true
 }
+
+
 
 
