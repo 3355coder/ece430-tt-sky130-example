@@ -9,7 +9,7 @@ project:
   top_module:   "tt_um_traffic_light_controller"
   source_files:
     - "project.v"
-  tiles:        "1x2"
+  tiles:        "1x1"
   clock_hz:     10000000
 
 # Standard Tiny Tapeout Pinout
