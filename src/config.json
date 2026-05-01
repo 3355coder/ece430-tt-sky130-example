@@ -11,16 +11,11 @@
     "GND_NETS": ["VGND"],
     "FP_PDN_RAILS_LAYER": "met1",
     "FP_PDN_LOWER_LAYER": "met4",
-    "FP_PDN_UPPER_LAYER": "met5",
+    "FP_PDN_UPPER_LAYER": "met4", 
     "PL_TARGET_DENSITY": 0.40,
     "DIE_AREA": "0 0 161.0 111.52",
     "FP_SIZING": "absolute",
-    "FP_IO_VTHICKNESS": 0.48,
-    "FP_IO_HTHICKNESS": 0.48,
-    "FP_IO_VWIDTH": 0.48,
-    "FP_IO_HWIDTH": 0.48,
     "GRT_REPAIR_ANTENNAS": true,
-    "RUN_CVC": 0,
     "QUIT_ON_TIMING_VIOLATIONS": false
 }
 
