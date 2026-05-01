@@ -7,37 +7,42 @@
 `default_nettype none
 
 module tt_um_traffic_light_controller (
-    input  wire [7:0] ui_in,
-    output wire [7:0] uo_out,
-    input  wire [7:0] uio_in,
-    output wire [7:0] uio_out,
-    output wire [7:0] uio_oe,
-    input  wire       ena,
-    input  wire       clk,
-    input  wire       rst_n
+    input  wire [7:0] ui_in,    // Dedicated inputs
+    output wire [7:0] uo_out,   // Dedicated outputs
+    input  wire [7:0] uio_in,   // IOs: Input path
+    output wire [7:0] uio_out,  // IOs: Output path
+    output wire [7:0] uio_oe,   // IOs: Enable path
+    input  wire       ena,      // logic enable
+    input  wire       clk,      // clock
+    input  wire       rst_n     // reset_n - low reset
 );
 
-    // Silence lint warnings
-    wire _unused = &{ui_in, uio_in, ena, 1'b0};
+    // Pin Mapping
+    // ui_in[0] = reset (high active for your FSM)
+    // uo_out[0] = green
+    // uo_out[1] = yellow
+    // uo_out[2] = red
+    // uo_out[3] = done
 
-    wire reset = !rst_n;
-    wire green, yellow, red, done;
-
-    // Pin Mapping: South Pins 0, 1, 2, 3
-    assign uo_out = {4'b0, done, red, yellow, green};
+    // Unused pins must be driven to 0
     assign uio_out = 8'b0;
     assign uio_oe  = 8'b0;
+    assign uo_out[7:4] = 4'b0;
+
+    // Handle Reset (TT uses active-low rst_n)
+    wire reset_high = !rst_n;
 
     finite_state_machine fsm_inst (
         .clock (clk),
-        .reset (reset),
-        .green (green),
-        .yellow(yellow),
-        .red   (red),
-        .done  (done)
+        .reset (reset_high),
+        .green (uo_out[0]),
+        .yellow(uo_out[1]),
+        .red   (uo_out[2]),
+        .done  (uo_out[3])
     );
 
 endmodule
+
 
 // Your FSM (unchanged except minor timing tweak)
 module finite_state_machine(
