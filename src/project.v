@@ -7,34 +7,35 @@
 `default_nettype none
 
 module tt_um_traffic_light_controller (
-    input  wire [7:0] ui_in,    
-    output wire [7:0] uo_out,   
-    input  wire [7:0] uio_in,   
-    output wire [7:0] uio_out,  
-    output wire [7:0] uio_oe,   
-    input  wire       ena,      
-    input  wire       clk,      
-    input  wire       rst_n     
+    input  wire [7:0] ui_in,    // Dedicated inputs
+    output wire [7:0] uo_out,   // Dedicated outputs
+    input  wire [7:0] uio_in,   // Bidirectional input
+    output wire [7:0] uio_out,  // Bidirectional output
+    output wire [7:0] uio_oe,   // Bidirectional enable
+    input  wire ena,
+    input  wire clk,
+    input  wire rst_n
 );
 
-    wire _unused = &{ui_in, uio_in, ena, 1'b0}; 
+    wire reset = ~rst_n;  // TT uses active-low rst_n; FSM expects active-high
+    wire green, yellow, red, done;
 
-    assign uio_out = 8'b0;
-    assign uio_oe  = 8'b0;      
-    assign uo_out[7:4] = 4'b0;  
+    // Map traffic light outputs to lower bits of uo_out (TT standard)
+    assign uo_out = {4'b0000, done, red, yellow, green};
+    assign uio_out = 8'b00000000;
+    assign uio_oe  = 8'b00000000;  // Bidirectional pins unused
 
-    wire reset_high = !rst_n;
-
-    finite_state_machine my_fsm (
-        .clock  (clk),
-        .reset  (reset_high),
-        .green  (uo_out[0]),
-        .yellow (uo_out[1]),
-        .red    (uo_out[2]),
-        .done   (uo_out[3])
+    finite_state_machine fsm (
+        .clock (clk),
+        .reset (reset),
+        .green (green),
+        .yellow(yellow),
+        .red   (red),
+        .done  (done)
     );
 
 endmodule
+
 
 module finite_state_machine(
     input clock,
@@ -59,14 +60,14 @@ module finite_state_machine(
         if (reset) begin
             state <= GREEN;
             timer <= 0;
-            done <= 0;
+            done  <= 0;
         end else begin
             state <= next_state;
             if (state != next_state)
                 timer <= 0;
             else
                 timer <= timer + 1;
-            done <= (state == RED && timer == RED_TIME);
+            done <= (state == RED && timer == RED_TIME - 1);  // Fix off-by-one timing
         end
     end
 
@@ -89,6 +90,5 @@ module finite_state_machine(
         endcase
     end
 endmodule
-
 
 
