@@ -17,13 +17,15 @@ module tt_um_traffic_light_controller (
     input  wire rst_n
 );
 
-    wire reset = ~rst_n;  // TT uses active-low rst_n; FSM expects active-high
+    // Mark unused inputs as "used" to silence Verilator warnings
+    wire _unused_ok = &{ui_in, uio_in, ena, 1'b0};
+
+    wire reset = ~rst_n;
     wire green, yellow, red, done;
 
-    // Map traffic light outputs to lower bits of uo_out (TT standard)
     assign uo_out = {4'b0000, done, red, yellow, green};
     assign uio_out = 8'b00000000;
-    assign uio_oe  = 8'b00000000;  // Bidirectional pins unused
+    assign uio_oe  = 8'b00000000;
 
     finite_state_machine fsm (
         .clock (clk),
@@ -36,7 +38,7 @@ module tt_um_traffic_light_controller (
 
 endmodule
 
-
+// Your FSM (unchanged except minor timing tweak)
 module finite_state_machine(
     input clock,
     input reset,
@@ -67,7 +69,7 @@ module finite_state_machine(
                 timer <= 0;
             else
                 timer <= timer + 1;
-            done <= (state == RED && timer == RED_TIME - 1);  // Fix off-by-one timing
+            done <= (state == RED && timer == RED_TIME - 1);
         end
     end
 
