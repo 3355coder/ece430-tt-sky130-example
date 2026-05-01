@@ -10,7 +10,7 @@
     "GND_NETS": ["VGND"],
     "FP_PDN_RAILS_LAYER": "met1",
     "FP_PDN_LOWER_LAYER": "met4",
-    "FP_PDN_UPPER_LAYER": "met5",
+    "FP_PDN_UPPER_LAYER": "met4",
     "PL_TARGET_DENSITY": 0.40,
     "DIE_AREA": "0 0 161.0 111.52",
     "CORE_AREA": "10 10 151.0 101.52",
