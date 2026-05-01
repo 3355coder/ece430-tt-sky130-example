@@ -7,11 +7,11 @@
 `default_nettype none
 
 module tt_um_traffic_light_controller (
-    input  wire [7:0] ui_in,    // Dedicated inputs
-    output wire [7:0] uo_out,   // Dedicated outputs
-    input  wire [7:0] uio_in,   // Bidirectional input
-    output wire [7:0] uio_out,  // Bidirectional output
-    output wire [7:0] uio_oe,   // Bidirectional enable
+    input  wire [7:0] ui_in,
+    output wire [7:0] uo_out,
+    input  wire [7:0] uio_in,
+    output wire [7:0] uio_out,
+    output wire [7:0] uio_oe,
     input  wire ena,
     input  wire clk,
     input  wire rst_n
