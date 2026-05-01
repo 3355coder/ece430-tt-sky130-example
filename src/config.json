@@ -1,3 +1,4 @@
+
 {
     "PDK": "sky130A",
     "SCL": "sky130_fd_sc_hd",
@@ -10,7 +11,7 @@
     "VDD_NETS": ["VDPWR"],
     "GND_NETS": ["VGND"],
     "FP_PDN_RAILS_LAYER": "met1",
-    "FP_PDN_LOWER_LAYER": "met4",
+    "FP_PDN_LOWER_LAYER": "met2",
     "FP_PDN_UPPER_LAYER": "met4",
     "FP_SIZING": "absolute",
     "DIE_AREA": "0 0 161.0 111.52",
@@ -19,5 +20,7 @@
     "RUN_CVC": 0,
     "QUIT_ON_TIMING_VIOLATIONS": false
 }
+
+
 
 
