@@ -5,8 +5,10 @@
     "VERILOG_FILES": ["dir::project.v"],
     "CLOCK_PORT": "clk",
     "CLOCK_PERIOD": 20.0,
+    "FP_SIZING": "absolute",
+    "DIE_AREA": "0 0 161 226",
     "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
-    "PL_TARGET_DENSITY": 0.45,
+    "PL_TARGET_DENSITY": 0.60,
     "RT_MAX_LAYER": "met4",
     "RT_MIN_LAYER": "met1",
     "FP_PDN_ENABLE_RAILS": 1,
@@ -18,6 +20,5 @@
     "VGND": "VGND",
     "MAGIC_WRITE_FULL_GDS": true
 }
-
 
 
