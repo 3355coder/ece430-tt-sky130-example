@@ -7,12 +7,14 @@
     "CLOCK_PERIOD": 100,
     "RT_MAX_LAYER": "met4",
     "TERMINAL_OUTPUT_FORMAT": "met4",
-    "FP_PDN_LOWER_LAYER": "met1",
+    "FP_PDN_RAILS_LAYER": "met1",
+    "FP_PDN_LOWER_LAYER": "met4",
     "FP_PDN_UPPER_LAYER": "met4",
     "PL_TARGET_DENSITY": 0.40,
     "GRT_REPAIR_ANTENNAS": true,
     "RUN_CVC": 0,
-    "QUIT_ON_TIMING_VIOLATIONS": false
+    "QUIT_ON_TIMING_VIOLATIONS": false,
+    "COMMENTS": "Force change to met4 PDN layers"
 }
 
 
