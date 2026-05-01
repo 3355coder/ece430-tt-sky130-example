@@ -15,6 +15,10 @@
     "DIE_AREA": "0 0 161.0 111.52",
     "CORE_AREA": "10 10 151.0 101.52",
     "FP_SIZING": "absolute",
+    "FP_IO_VTHICKNESS": 0.48,
+    "FP_IO_HTHICKNESS": 0.48,
+    "FP_IO_VWIDTH": 0.48,
+    "FP_IO_HWIDTH": 0.48,
     "GRT_REPAIR_ANTENNAS": true,
     "RUN_CVC": 0,
     "QUIT_ON_TIMING_VIOLATIONS": false
