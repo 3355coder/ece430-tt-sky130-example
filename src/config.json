@@ -10,8 +10,6 @@
     "TERMINAL_OUTPUT_FORMAT": "met4",
     "VDD_NETS": ["VDPWR"],
     "GND_NETS": ["VGND"],
-    "FP_SIZING": "absolute",
-    "DIE_AREA": "0 0 161.0 111.52",
     "PL_TARGET_DENSITY": 0.40,
     "GRT_REPAIR_ANTENNAS": true,
     "RUN_CVC": 0,
