@@ -1,17 +1,26 @@
 {
-    "PDK": "sky130A",
-    "SCL": "sky130_fd_sc_hd",
-    "DESIGN_NAME": "tt_um_traffic_light_controller",
-    "VERILOG_FILES": ["dir::project.v"],
-    "CLOCK_PORT": "clk",
-    "CLOCK_PERIOD": 10.0,
-    "FP_SIZING": "absolute",
-    "DIE_AREA": "0 0 161.0 111.52",
-    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
-    "PL_TARGET_DENSITY": 0.4,
-    "MAGIC_WRITE_FULL_GDS": true
+  "PDK": "sky130A",
+  "SCL": "sky130_fd_sc_hd",
+  "DESIGN_NAME": "tt_um_traffic_light_controller",
+  "VERILOG_FILES": ["dir::project.v"],
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 10.0,
+  "FP_SIZING": "absolute",
+  "DIE_AREA": "0 0 161.0 111.52",
+  "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+  "PL_TARGET_DENSITY": 0.45,
+  "RT_MAX_LAYER": "met4",
+  "RT_MIN_LAYER": "met1",
+  "FP_PDN_ENABLE_RAILS": 1,
+  "FP_PDN_ENABLE_GLOBAL_CONNECTIONS": 1,
+  "FP_PDN_MULTILAYER": 0,
+  "PDN_CORE_RAILS_LAYER": "met1",
+  "PDN_CORE_RAILS_WIDTH": 0.48,
+  "PDN_CORE_RAILS_OFFSET": 0,
+  "MAGIC_WRITE_FULL_GDS": true,
+  "POWER": ["VPWR"],
+  "GROUND": ["VGND"]
 }
-
 
 
 
